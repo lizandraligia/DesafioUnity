@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Die(){
+    void Die(){        
         animator.SetBool("isDead", true);
         StartCoroutine(WaitDeath());
     }
@@ -69,6 +69,8 @@ public class Enemy : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
         gameObject.SetActive(false);
+        Spawner.score++;
+        PlayerMovement.specialKilled++;
     }
 
     void OnDrawGizmosSelected(){
